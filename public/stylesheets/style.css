@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+}
+
+header { 
+    display: block;
+    text-align: center;
+    padding:0.5%;
+    background-color: grey;
+}
+
+ul.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ul.topnav li {
+    float: left;
+}
+
+ul.topnav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.topnav li a:hover {
+    background-color: #4CAF50;
+}
+
+ul.topnav li.right {
+    float: right;
+}
+
+@media screen and (max-width: 600px) {
+  ul.topnav li.right, 
+  ul.topnav li {
+      float: none; 
+    }
+}
+
+.addnew{
+    font-size: 13pt;
+    border-radius: 3rem;
+    background-color: #96eb0c;
+    padding: 2rem;
+}
+
+input[type=text], [type=number],[type=date],[type=submit]{
+    width: 100%;
+    padding: 0.25rem;
+    border-radius: 1%;
+}
+
+input[type=text], [type=number],[type=date],[type=submit]:focus {
+    outline: none;
+    box-shadow: 0px 0px 5px #61C5FA;
+    border:1px solid #5AB0DB;
+}
+
+input[type=submit] {
+    background-color:rgba(70, 69, 69, 0.562);
+    color: black;
+    font-size: 13pt;
+    padding: 0.25rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: green;
+}
+
+label {
+    padding: 0.5rem 0rem 0.5rem 0rem;
+    display: inline-block;
+    font-weight: bold;
+}
+
