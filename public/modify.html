@@ -20,12 +20,13 @@
         <li><a href="/modify.html">Modify</a></li>
         <li><a href="/delete.html">Delete</a></li>
         <li><a href="/view.html">View</a></li>
-        <li><a href="/display.html">Display</a></li>
+        <li><form action="/getallpeople" method="get"><button>Display</button>
+        </form></li>
         <li class="right"><a href="/help.html">Help</a></li>
         </ul>
     </nav>
 
-    <form class = "addnew" action="/addpeople" method="post">
+    <form class = "addnew" action="/modifypeople" method="post">
         <label for="name">Name</label>
         <input type="text" name="name" placeholder="Username"> <br>
         <label for="character">Character</label>
@@ -37,7 +38,7 @@
         <label for="age">Age</label>
         <input type="number" name="age" placeholder="Age"> <br>
         <label for="type">Type</label>
-        <input type="number" name="type" placeholder="Type"> <br>
+        <input type="text" name="type" placeholder="Type"> <br>
         <label for="birthplace">Hometown</label>
         <input type="text" name="birthplace" placeholder="birthplace"> <br>
         <label for="dob">Date of birth</label>
@@ -45,21 +46,11 @@
         <label for="fmove">Finisher move</label>
         <input type="text" name="fmove" placeholder="move"> <br>
         <label for="gender">Gender</label>
-        <select id="gender" name="gender">
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-            <option value="Others">Others</option>
-        <!-- <label for="gender">Gender</label>
-        <input type="Radio" name="gender" value="Male">Male 
-        <input type="Radio" name="gender" value="Female">Female 
-        <input type="Radio" name="gender" value="Others">Others <br> -->
+        <input type="text" name="gender" placeholder="gender"> <br>
         <input type="submit" name="sub" value="CHANGE"> <br>
 
     </form>
 
-
-
-
-    <script src='main.js'></script>
+    
 </body>
 </html>

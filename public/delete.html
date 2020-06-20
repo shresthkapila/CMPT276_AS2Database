@@ -21,18 +21,23 @@
         <li><a href="/modify.html">Modify</a></li>
         <li><a href="/delete.html">Delete</a></li>
         <li><a href="/view.html">View</a></li>
-        <li><a href="/display.html">Display</a></li>
+        <li>
+            <form action="/getallpeople" method="get">
+                <button>Display</button>
+            </form>
+        </li>
         <li class="right"><a href="/help.html">sHelp</a></li>
         </ul>
     </nav>
     
-    <form class = "addnew" action="/addpeople" method="post">
+    <form class = "addnew" action="/deletepeople" method="post">
         <label for="name">Name</label>
         <input type="text" name="name" placeholder="Username"> <br>
-        
+        <label for="character">Character</label>
+        <input type="text" name="character" placeholder="Character"> <br>
+
         <input type="submit" name="sub" value="DELETE"> <br>
     </form>
 
-    <script src='main.js'></script>
 </body>
 </html>

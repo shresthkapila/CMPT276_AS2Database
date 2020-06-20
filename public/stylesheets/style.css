@@ -9,7 +9,7 @@ header {
     background-color: grey;
 }
 
-ul.topnav {
+ul.topnav,button {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -17,7 +17,7 @@ ul.topnav {
   background-color: #333;
 }
 
-ul.topnav li {
+ul.topnav li ,button{
     float: left;
 }
 
@@ -38,7 +38,7 @@ ul.topnav li.right {
 }
 
 @media screen and (max-width: 600px) {
-  ul.topnav li.right, 
+  ul.topnav li.right, button,
   ul.topnav li {
       float: none; 
     }
