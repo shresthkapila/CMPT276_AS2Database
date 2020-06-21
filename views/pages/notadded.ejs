@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Database People</title>
+    <title>Display All People</title>
     <link rel='stylesheet' type='text/css' media='screen' href='stylesheets/style.css'>
 
 </head>
 <body>
-  <header> 
-    <h1>Database People </h1>
-  </header>
+    <header> 
+        <h1>Database People </h1>
+    </header>
 
   <nav>
     <ul class="topnav">
@@ -21,14 +21,22 @@
       <li><a href="/delete.html">Delete</a></li>
       <li><a href="/view.html">Search</a></li>
       <li>
-        <form id="displaybutton" action="/getallpeople" method="get">
+        <form action="/getallpeople" method="get">
           <button>Display</button>
         </form>
       </li>
       <li class="right"><a href="/help.html">Help</a></li>
     </ul>
   </nav>
+  
+  <div class="container">
     
-    <script src='main.js'></script>
+
+    <p>Task unsuccessful
+        
+    </p>
+
+</div>
+        
 </body>
 </html>

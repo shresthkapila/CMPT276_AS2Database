@@ -36,16 +36,28 @@ app.post('/addpeople',(req,res)=>{
   var intAge=1*age;
   var intHeight=1*height;
 
-  var getUsersQuery = "INSERT INTO ppl VALUES ('" +uname + "','" + charac + "'," + intSize+ ","+ intHeight+"," + intAge+",'"+ type+"','"+ birthplace +"','"+ date+"','"+ fmove+"','" +gender+"')";
-  pool.query(getUsersQuery, (error, result) => {
-    if (error) {
-      res.send(error);
-    }
-    ///res.render('public/index.html') ///
-    res.end()
-   
-  });
+  if(uname && charac && size && height && age && type && birthplace && date && fmove && gender)  {
+    var getUsersQuery = "INSERT INTO ppl VALUES ('" +uname + "','" + charac + "'," + intSize+ ","+ intHeight+"," + intAge+",'"+ type+"','"+ birthplace +"','"+ date+"','"+ fmove+"','" +gender+"')";
+    pool.query(getUsersQuery, (error, result) => {
+      if (error) {
+        res.send(error);
+      }
+      const results = { 'rows': (result) ? result.rows : null};
+      res.render('pages/display.ejs', results);
+      res.end()
+     
+      });
+  }
+  else {
+    res.render('pages/notadded.ejs')
+    res.end();
+  }
+
 });
+
+
+
+  
 
 app.get('/getallpeople', async (req,res) => {
   try {
@@ -53,6 +65,7 @@ app.get('/getallpeople', async (req,res) => {
     const client = await pool.connect()
     const result = await client.query('SELECT * FROM ppl');
     const results = { 'rows': (result) ? result.rows : null};
+    // console.log(result.rows);
     res.render('pages/db', results );
     client.release();
   } catch (err) {
@@ -105,7 +118,20 @@ app.post('/modifypeople',(req,res)=>{
   });
 });
 
+app.get('/db/:id', (req,res) => {
+  console.log(req.params.id);
+  var getUsersQuery = `SELECT * FROM ppl WHERE uname = '${req.params.id}'`;
 
+  console.log(getUsersQuery);
+
+  pool.query(getUsersQuery, (error, result) => {
+    if (error)
+      res.end(error);
+    var results = {'rows': result.rows };
+    console.log(result);
+    res.render('pages/printppl', results)
+});
+});
 
 
 

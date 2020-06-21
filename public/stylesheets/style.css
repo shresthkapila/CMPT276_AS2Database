@@ -9,7 +9,7 @@ header {
     background-color: grey;
 }
 
-ul.topnav,button {
+ul.topnav, button{
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -17,16 +17,28 @@ ul.topnav,button {
   background-color: #333;
 }
 
-ul.topnav li ,button{
+ul.topnav li, #displaybutton{
     float: left;
 }
 
-ul.topnav li a {
+ul.topnav li a{
   display: block;
   color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+}
+
+button {
+    padding: 0.85rem;
+    color: white;
+    border: none;
+    text-align: center;
+    font-size: 12pt;
+}
+
+button:hover {
+    background-color: #4CAF50;
 }
 
 ul.topnav li a:hover {
@@ -39,12 +51,12 @@ ul.topnav li.right {
 
 @media screen and (max-width: 600px) {
   ul.topnav li.right, button,
-  ul.topnav li {
+  ul.topnav li, #displaybutton {
       float: none; 
     }
 }
 
-.addnew{
+.addnew, .modifynew, .deletenew, .searchnew{
     font-size: 13pt;
     border-radius: 3rem;
     background-color: #96eb0c;
