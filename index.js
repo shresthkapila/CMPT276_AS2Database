@@ -80,14 +80,16 @@ app.post('/deletepeople', (req, res) => {
   var charac = req.body.character;
 
   if(uname && charac)  {
-    var getUsersQuery = `DELETE FROM ppl where uname = '${ uname }' AND character =  '${charac}'`;
+    var getUsersQuery = `DELETE FROM ppl WHERE uname = '${ uname }' AND character =  '${charac}'`;
 
-    var getCheckQuery = `SELECT * FROM ppl where uname = '${uname} AND character = '${charac}'`;
-    pool.query(getCheckQuery, (err, ans) => {
-      if (err) {
-        res.render('pages/notadded.ejs')
-      }
-    });
+    // var getCheckQuery = `SELECT * FROM ppl WHERE uname = '${uname} AND character = '${charac}'`;
+    // pool.query(getCheckQuery, (err, ans) => {
+    //   console.log(ans);
+    //   if (err) {
+    //     res.render('pages/notadded.ejs')
+    //   }
+      
+    // });
 
     pool.query(getUsersQuery, (error, result) => {
       if (error) {
@@ -124,12 +126,12 @@ app.post('/modifypeople',(req,res)=>{
   if(uname && charac && size && height && age && type && birthplace && fmove && gender)  {
     var getUsersQuery = `UPDATE ppl SET size= ${intSize}, height=${intHeight}, age=${intAge}, type='${type}', birthplace='${birthplace}', fmove='${fmove}', gender='${gender}' where uname = '${uname}' AND character = '${charac}'`;
     
-    var getCheckQuery = `SELECT * FROM ppl where uname = '${uname} AND character = '${charac}'`;
-    pool.query(getCheckQuery, (err, ans) => {
-      if (err) {
-        res.render('pages/notadded.ejs')
-      }
-    });
+    // var getCheckQuery = `SELECT * FROM ppl where uname = '${uname} AND character = '${charac}'`;
+    // pool.query(getCheckQuery, (err, ans) => {
+    //   if (err) {
+    //     res.render('pages/notadded.ejs')
+    //   }
+    // });
   
     pool.query(getUsersQuery, (error, result) => {
       if (error) {
