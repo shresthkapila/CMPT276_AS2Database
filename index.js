@@ -87,6 +87,8 @@ app.post('/deletepeople', (req, res) => {
       if (err) {
         res.render('pages/notadded.ejs')
       }
+      const anss = { 'rows': (ans) ? ans.rows : null};
+      res.render('pages/added.ejs', anss);
     });
 
     pool.query(getUsersQuery, (error, result) => {
@@ -129,8 +131,6 @@ app.post('/modifypeople',(req,res)=>{
       if (err) {
         res.render('pages/notadded.ejs')
       }
-      const anss = { 'rows': (ans) ? ans.rows : null};
-      res.render('pages/added.ejs', anss);
     });
   
     pool.query(getUsersQuery, (error, result) => {
