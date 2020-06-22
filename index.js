@@ -29,23 +29,22 @@ app.post('/addpeople',(req,res)=>{
   var age = req.body.age;
   var type = req.body.type;
   var birthplace = req.body.birthplace;
-  var date = req.body.dob;
   var fmove = req.body.fmove;
   var gender = req.body.gender;
   var intSize= 1*size;
   var intAge=1*age;
   var intHeight=1*height;
 
-  if(uname && charac && size && height && age && type && birthplace && date && fmove && gender)  {
-    var getUsersQuery = "INSERT INTO ppl VALUES ('" +uname + "','" + charac + "'," + intSize+ ","+ intHeight+"," + intAge+",'"+ type+"','"+ birthplace +"','"+ date+"','"+ fmove+"','" +gender+"')";
+  if(uname && charac && size && height && age && type && birthplace && fmove && gender)  {
+    var getUsersQuery = "INSERT INTO ppl VALUES ('" +uname + "','" + charac + "'," + intSize+ ","+ intHeight+"," + intAge+",'"+ type+"','"+ birthplace +"','"+ fmove+"','" +gender+"')";
     pool.query(getUsersQuery, (error, result) => {
       if (error) {
-        res.send(error);
+        // res.end(error);
+        res.render('pages/notadded.ejs')
       }
       const results = { 'rows': (result) ? result.rows : null};
-      res.render('pages/display.ejs', results);
+      res.render('pages/added.ejs', results);
       res.end()
-     
       });
   }
   else {
@@ -70,7 +69,8 @@ app.get('/getallpeople', async (req,res) => {
     client.release();
   } catch (err) {
     console.error(err);
-    res.send("Error " + err);
+    // res.send("Error " + err);
+    res.render('pages/notadded.ejs')
   }
 })
 
@@ -79,15 +79,29 @@ app.post('/deletepeople', (req, res) => {
   var uname = req.body.name;
   var charac = req.body.character;
 
-  var getUsersQuery = `DELETE FROM ppl where uname = '${ uname }' AND character =  '${charac}'`;
-  pool.query(getUsersQuery, (error, result) => {
-    if (error) {Í
-      res.send(error);
-    }
-    ///res.render('public/index.html') ///
-    res.end()
-   
-  });
+  if(uname && charac)  {
+    var getUsersQuery = `DELETE FROM ppl where uname = '${ uname }' AND character =  '${charac}'`;
+
+    var getCheckQuery = `SELECT * FROM ppl where uname = '${uname} AND character = '${charac}'`;
+    pool.query(getCheckQuery, (err, ans) => {
+      if (err) {
+        res.render('pages/notadded.ejs')
+      }
+    });
+
+    pool.query(getUsersQuery, (error, result) => {
+      if (error) {
+        res.render('pages/notadded.ejs')
+        // res.send(error);
+      }
+      const results = { 'rows': (result) ? result.rows : null};
+      res.render('pages/added.ejs', results);
+      // res.end();
+    });
+  }
+  else {
+    res.render('pages/notadded.ejs')
+  }
 });
 
 
@@ -100,37 +114,76 @@ app.post('/modifypeople',(req,res)=>{
   var age = req.body.age;
   var type = req.body.type;
   var birthplace = req.body.birthplace;
-  var date = req.body.dob;
   var fmove = req.body.fmove;
   var gender = req.body.gender;
   var intSize= 1*size;
   var intAge=1*age;
   var intHeight=1*height;
 
-  var getUsersQuery = `UPDATE ppl SET size= ${intSize}, height=${intHeight}, age=${intAge}, type='${type}', birthplace='${birthplace}', date='${date}', fmove='${fmove}', gender='${gender}' where uname = '${uname}' AND character = '${charac}'`;
-  pool.query(getUsersQuery, (error, result) => {
-    if (error) {
-      res.send(error);
-    }
-    ///res.render('public/index.html') ///
-    res.end()
-   
-  });
+  
+  if(uname && charac && size && height && age && type && birthplace && fmove && gender)  {
+    var getUsersQuery = `UPDATE ppl SET size= ${intSize}, height=${intHeight}, age=${intAge}, type='${type}', birthplace='${birthplace}', fmove='${fmove}', gender='${gender}' where uname = '${uname}' AND character = '${charac}'`;
+    
+    var getCheckQuery = `SELECT * FROM ppl where uname = '${uname} AND character = '${charac}'`;
+    pool.query(getCheckQuery, (err, ans) => {
+      if (err) {
+        res.render('pages/notadded.ejs')
+      }
+    });
+  
+    pool.query(getUsersQuery, (error, result) => {
+      if (error) {
+        res.render('pages/notadded.ejs')
+        // res.send(error);
+      }
+      const results = { 'rows': (result) ? result.rows : null};
+      res.render('pages/added.ejs', results);
+      // res.end()
+    });
+  }
+  else {
+    res.render('pages/notadded.ejs')
+    // res.end();
+  }
 });
 
-app.get('/db/:id', (req,res) => {
+app.get('/:id', (req,res) => {
   console.log(req.params.id);
   var getUsersQuery = `SELECT * FROM ppl WHERE uname = '${req.params.id}'`;
 
   console.log(getUsersQuery);
 
   pool.query(getUsersQuery, (error, result) => {
-    if (error)
-      res.end(error);
+    if (error) {
+      res.render('pages/notadded.ejs')
+    }
+      // res.end(error);
     var results = {'rows': result.rows };
     console.log(result);
     res.render('pages/printppl', results)
 });
+});
+
+
+app.post('/searchpeople', (req, res) => {
+  console.log("post request for /searchpeople");
+  var uname = req.body.name;
+
+  if(uname)  {
+    var getUsersQuery = `SELECT * FROM ppl WHERE uname = '${uname}'`;
+    pool.query(getUsersQuery, (error, result) => {
+      if (error) {
+        res.render('pages/notadded.ejs')
+        // res.send(error);
+      }
+      const results = { 'rows': (result) ? result.rows : null};
+      res.render('pages/printppl.ejs', results);
+      // res.end();
+    });
+  }
+  else {
+    res.render('pages/notadded.ejs')
+  }
 });
 
 

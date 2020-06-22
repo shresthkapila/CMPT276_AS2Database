@@ -11,7 +11,7 @@
 </head>
 <body>
     <header> 
-        <h1>Database People </h1>
+      <h1>DATABASE PEOPLE </h1>
     </header>
 
   <nav>
@@ -20,7 +20,7 @@
       <li><a href="/add.html">Add</a></li>
       <li><a href="/modify.html">Modify</a></li>
       <li><a href="/delete.html">Delete</a></li>
-      <li><a href="/view.html">Search</a></li>
+      <li><a href="/search.html">Search</a></li>
       <li>
         <form action="/getallpeople" method="get">
           <button>Display</button>
@@ -30,10 +30,13 @@
     </ul>
   </nav>
   
-  <div class="container">
+  <div class="tb1">
     
+    <h4> All people in database...</h4>
+    <p> <u> Note: table is null, if there are not any people.</u></p>
+
       <table>
-        <tr>
+        <tr class="col">
         <th>Name </th>
         <th>Character</th>
         <th>Size</th>
@@ -41,38 +44,26 @@
         <th>Age</th>
         <th>Type</th>
         <th>Hometown</th>
-        <th>Date of Birth</th>
         <th>Finisher move</th>
         <th> Gender</th>
         </tr>
         <% rows.forEach(function(r) { %>
           <tr>
-            <td> <a href="/db/<%=r.uname%> "><%= r.uname %></a> </td>
+            <td> <a href="/<%=r.uname%> "><%= r.uname %></a> </td>
             <td> <%= r.character %> %></td>
             <td> <%= r.size %></td>
             <td> <%= r.height %></td>
             <td> <%= r.age %></td>
             <td> <%= r.type %></td>
             <td> <%= r.birthplace %></td>
-            <td><%= r.dob %></td>
             <td><%= r.fmove %></td>
             <td><%= r.gender %></td>
           </tr>
-          
-            <!-- <svg>
-              <g>
-                <rect onclick= function() {
 
-                } x="0" y="10" width=<%= r.size %> height= <%= r.height %> 
-                  
-                  onclick=<%= r.uname %>, <%= r.character %>,  <%= r.size %>,  <%= r.height %>,  <%= r.age %>,  <%= r.type %>,  <%= r.birthplace %>,  <%= r.dob %>,  <%= r.fmove %>,  <%= r.gender %> 
-                  style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
-                <text x="50%" y="20%" dominant-baseline="middle" text-anchor="middle"><%= r.uname %></text>
-              </g>
-            </svg> -->
         <% }); %>
       </table>
-    
+      
+      <h4> .....End</h4>
     </div>
     
 </body>

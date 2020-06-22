@@ -11,7 +11,7 @@
 <body>
     
     <header> 
-        <h1>Database People </h1>
+        <h1>DATABASE PEOPLE </h1>
     </header>
 
     <nav>
@@ -20,24 +20,24 @@
         <li><a href="/add.html">Add</a></li>
         <li><a href="/modify.html">Modify</a></li>
         <li><a href="/delete.html">Delete</a></li>
-        <li><a href="/view.html">Search</a></li>
+        <li><a href="/search.html">Search</a></li>
         <li>
             <form id="displaybutton" action="/getallpeople" method="get">
                 <button>Display</button>
             </form>
         </li>
-        <li class="right"><a href="/help.html">sHelp</a></li>
+        <li class="right"><a href="/help.html">Help</a></li>
         </ul>
     </nav>
     
     <form class = "deletenew" action="/deletepeople" method="post">
 
-        <h4> To delete any people, enter the name and character</h4>
+        <h4> <u> To delete any people, enter the name and character </u></h4>
 
         <label for="name">Name</label>
-        <input type="text" name="name" placeholder="Username"> <br>
+        <input type="text" name="name" placeholder="username"> <br>
         <label for="character">Character</label>
-        <input type="text" name="character" placeholder="Character"> <br>
+        <input type="text" name="character" placeholder="character"> <br>
 
         <input type="submit" name="sub" value="DELETE"> <br>
     </form>

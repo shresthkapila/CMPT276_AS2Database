@@ -2,11 +2,23 @@ body {
     margin: 0;
 }
 
-header { 
+header{ 
     display: block;
     text-align: center;
     padding:0.5%;
     background-color: grey;
+}
+
+h4 {
+    font-size: 18pt;
+    font-weight: bolder;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#hd2 {
+    font-size: 13pt;
+    font-weight: bold;
+    font-family: sans-serif;
 }
 
 ul.topnav, button{
@@ -56,7 +68,7 @@ ul.topnav li.right {
     }
 }
 
-.addnew, .modifynew, .deletenew, .searchnew{
+.addnew, .modifynew, .deletenew, .searchnew, .tb1, .homepage, .helppage, .addsuccess, .addfailure, .displayppl{
     font-size: 13pt;
     border-radius: 3rem;
     background-color: #96eb0c;
@@ -95,3 +107,50 @@ label {
     font-weight: bold;
 }
 
+
+table{
+    background-color: #96eb0c;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: auto;
+    border: 0.5 solid black;
+    left: 0%;
+    top: 10%;
+}
+
+tr.tb1 {
+    font-weight: bold;
+    font-size: 14pt;
+}
+
+td, th{
+    border: 2px solid black;
+    padding:0.5rem;
+    width: 5%;
+    /* font-weight: bold; */
+    text-align: center;
+    font-size: 13pt;
+}
+
+#imag {
+    display: block;
+    width:10rem;
+    height: auto;
+    float: right;
+    top: 0;
+}
+
+#imag2 {
+    display: block;
+    width: 20rem;
+    height: auto;
+    float: right;
+}
+
+u{
+    color: blue;
+}
+
+#red {
+    color: red;
+}
